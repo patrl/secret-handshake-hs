@@ -4,12 +4,13 @@ let
 
   inherit (nixpkgs) pkgs;
 
-  f = { mkDerivation, base, stdenv }:
+  f = { mkDerivation, base, libsodium, stdenv }:
       mkDerivation {
         pname = "secret-handshake-hs";
         version = "0.1.0.0";
         src = ./.;
         libraryHaskellDepends = [ base ];
+        libraryPkgconfigDepends = [ libsodium ];
         license = stdenv.lib.licenses.bsd3;
       };
 
